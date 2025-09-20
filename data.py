@@ -43,3 +43,12 @@ def convert_data_types(data): #Function to convert data types
         data[columns] = data[columns].astype(dtype, errors="ignore")
     except KeyError:
         print("Enter a valid column name and dtype")
+def merge_dataframes(data1, data2, **merge_kwargs): #merging dataframes
+    """Merging two dataframes"""
+    return data1.merge(data2, **merge_kwargs)
+def new_column(data,new_col,condition,old_col): #creating new columns by using an exsting column
+    data[new_col] = data[old_col].apply(condition)
+def renaming_columns(data, dictionary):
+    """Renaming columns"""
+    #The dictionary arguement would take the format {"Old column_name":"New column_name"}
+    return data.rename(columns=dictionary)
