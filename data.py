@@ -52,3 +52,13 @@ def renaming_columns(data, dictionary):
     """Renaming columns"""
     #The dictionary arguement would take the format {"Old column_name":"New column_name"}
     return data.rename(columns=dictionary)
+def savefile(clean_data, path): #Function to save file
+    """Save dataframe to file"""
+    if path.endswith(".csv"):
+        clean_data.to_csv(path, index=False)
+    elif path.endswith(".json"):
+        clean_data.to_json(path, orient='records')
+    elif path.endswith(".xlsx"):
+        clean_data.to_excel(path, index=False)
+    elif path.endswith(".parquet"):
+        clean_data.to_parquet(path, index=False)
